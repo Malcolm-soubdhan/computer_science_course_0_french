@@ -1,0 +1,800 @@
+Bases informatique_notes personnelles
+
+
+Professeur : Catherine le Nen.
+
+
+		Plan détaillé du cours: 
+
+-Notions de base :
+	-la machine virtuelle
+	-le proxy
+	-comment créer une session utilisateurs
+	-notes diverses ( 1)
+
+I Bonnes pratiques d'installation et de MAJ. :
+
+	1-partitionnement
+	2-création d 'un compte local d'administration
+	3-configuration du réseau
+		a) configuration de la carte réseau
+		b) configuration du réseau
+		c) activer certains services réseau
+		d) accès par pont
+4-Nommer la machine
+5- vérifier les pilotes
+6- effectuer un back-up des pilotes
+7-installer un pack logiciel de base
+8-créer une session limitée ( test)
+
+-A faire dans la session "test"
+	1-configurer l'accès au réseau
+		a) procédure
+		a) configuration du proxy
+		c) test de connexion
+	2-paramétrer l'accès au partage commun
+		-le chemin d'accès UNC
+notes diverses ( 2)
+
+II Optimiser un système :
+	1- optimisation des performances systèmes
+		-optimiser le démarrage
+
+	2-Optimiser la mémoire virtuelle
+		a) augmentation de la m.v
+		b) réduction des effets visuels
+		c) utiliser readyboost
+		d) activer/ désactiver des fonctionnalités de 
+		windows
+	
+	
+
+
+
+
+3-Optimiser l'espace de stockage
+		a) activer la compression sur la ou les partitions
+		de données
+		b)paramétrer la défragmentation
+		c)les points de restauration
+			1 créer un point de restauration
+			2 afficher un point de restauration
+			3 nettoyer les anciens points de restauration
+	e) nettoyer le disque
+	f) nettoyer régulièrement les fichiers système
+	g) réserver un quota disque
+
+III Procédures pour la sauvegarde
+
+	1- créer une image système
+	2-faire une sauvegarde des données
+	3-sauvegarder dans un serveur-suite
+	4-ajouter un disque dur
+	5- créer un ISO de boot
+	
+IV détails configuration d'une VM
+
+	1- renommer une VM
+	2- installer ou supprimer les additions
+
+
+
+
+Notions de base :
+
+La machine virtuelle :
+Elle utilise les ressources de la machine physique. ( RAM, processeur...), mais ce n'est qu'un fichier hébergé sur la machine physique. 
+
+Le proxy: 
+C'est un mandataire " filtrant et cachant", >au sens de mémoire cache>, qui garde les données pendant une durée déterminée. Un Admin réseau a par exemple l'obligation de garder les connexions réseau pendant un an. Le proxy peut filtrer :
+les utilisateurs (1) et les sites/les demandes (2). Les sites sont autorisés ( "liste blanche") ou pas ("liste noire"). 
+
+Le proxy peut faire office de serveur DNSS. 
+
+Le proxy=
+>mandataire
+>filtrant
+>cachant.
+
+Les procédures: 
+Ce sont des instructions détaillées avec des captures d'écran. 
+
+Comment créer une session: 
+>cliquer droit sur le bouton "démarrer". 
+>aller dans "utilisateurs". 
+>nouvel utilisateur
+
+Notes diverses ( 1) : 
+
+-Ne jamais toucher à l'adressage de la carte réseau de la machine virtuelle. C'est un commutateur virtuel. 
+-Adresse ipv4 : 82 bits. 
+-Adresse ipv6: 126 bits
+-fibre= ipv6. 
+-ADSL= ça dépend. 
+-L'Intranet est un serveur de fichiers qui fonctionne en FTP. 
+-la passerelle "va nous permettre de communiquer entre nous". 
+-Internet est un ensemble de réseaux interconnectés par des routeurs. 
+-pinger= taper "ping" puis adresse de la machine à pinger. 
+-Une attaque par "déni de service": des pirates surchargent un serveur de demandes et le "font tomber". 
+-A partir d'un serveur physique, on peut créer plusieurs serveurs virtuels. 
+-Le "fail over" est une continuité de service. Tous les serveurs sont "redondés": si un serveur tombe en panne, un autre prend le relais. 
+
+>Avoir un serveur physique et plusieurs serveurs virtuels est plus économique: un serveur coûte environ 60 000€. De plus, c'est plus sécurisé. 
+
+Les licences : 
+
+1>Licence EOM. 
+2>Licence retail : sur une machine à la fois. Pour les petites entreprises. > permet d'évoluer avec le matériel. 
+3>Licence en volumes : professionnel. À partir de 500 unités. 
+
+VM ( machine virtuelle ) bonnes pratiques :
+
+"Toujours choisir les configurations proposées par le gestionnaire de virtualbox en termes de RAM".  Ne jamais en mettre plus, en mettre moins est possible. 
+
+Toujours choisir des disques de type VHD, et de de type dynamique pour l'allocation des ressources. Et, de préférence, une taille divisible par 3. 
+Quelle que soit la machine virtuelle, on doit mettre le compte "technicien". La réponse aux questions est toujours"linux" sans majuscule. 
+Les données de l'utilisateur ne sont pas sauvegardées en local, mais sur un serveur. 
+
+Bonnes pratiques d'installation et de mise à jour: 
+
+1) Partitionnement 
+
+partitionnement à l'installation pour séparer les données de l'OS:
+>2/3 pour l'OS. 
+>1/3 pour les données. 
+
+2) Création du compte local d'administration
+À savoir ici: 
+login= technicien
+MP=Ligfy123!
+Réponse à toutes les questions de sécurité: linux. 
+(note:  Pour le réseau, choisir " je n'ai pas accès à Internet". )
+
+3-Configuration :
+
+Les Add-ons: 
+Ils permettront entre autres de capturer des clefs USB dans la machine virtuelle, ou de transférer un fichier de la machine virtuelle à la machine physique. 
+
+a) La configuration de la carte réseau:
+1>dynamique
+2>statique, manuellement : la machine a toujours la même adresse. ex: l'imprimante réseau a toujours la même adresse ( "réservation dans le serveur DHCP"). 
+
+On va devoir configurer l'accès au réseau, et donc installer les pilotes. 
+
+b) Configuration du réseau: 
+
+>En DHCP, ou en statique selon CDC. 
+>Renseigner DNS spécifique si nécessaire. 
+>Renseigner le proxy si nécessaire. 
+>Basculer le statut de la connexion de "public" à "privé". 
+
+c) Activer certains services réseaux :
+
+* lancer le gestionnaire de tâche=clic droit sur la barre des tâches, ou ctrl+Alt+suppr. 
+> découverte SSDP. 
+>Hôte de périphérique Upnp. 
+>hôte du fournisseur de découverte. 
+>publication des ressources des découvertes des fonctions. 
+
+On a fait passer ces services de "manuel" à "automatique". 
+
+>On va ensuite lancer CMD, l'invite de commande, pour vérifier l'obtention d'une IP via IPconfig. 
+>Ensuite, on tape "ping"+ l'adresse de Google, 8.8.8.8
+
+d) Accès par pont: 
+>Aller dans "machine" dans la VM. 
+>Configuration >réseau > dans "mode d'accès réseau", mettre "accès par pont", et dans "avancé", aller dans "mode de promiscuité", et choisir "allow all". 
+
+>accès réseau via "ping": vers la passerelle, et vers le DNS de google. 
+
+4) nommer la machine selon CDC. On mettra: "VM>" suivi des 4 premières lettres de notre prénom. ( sans accents, sans espaces). 
+
+5)Vérifier les pilotes: 
+
+ctrl+alt+suppr : gestionnaire de périphérique. Pour mettre à jour un pilote, on doit toujours aller sur le site officiel. 
+>Aller sur HPdriver. 
+>entrer le n° de série et sélectionner le système d'exploitation. 
+
+notes: 
+>Un pilote bien à jour a un icône en forme de certificat. Chemin d'accès: On clique sur un pilote, on fait un clic droit, puis "propriétés". Double>driver est un logiciel qui fait des sauvegardes de pilotes. 
+>DHCP est un protocole qui permet à une machine d'obtenir son IP automatiquement. On dit que la carte "est configurée en DHCP". 
+
+6) Effectuer un back>up des pilotes qu'on conserve sur un partage réseau ou sur un support externe. 
+
+7) Installer un pack de logiciels de base :
+>un pilote bureautique. ( Libre Office)
+>un navigateur web et ses modules ( Firefox). 
+>un visionneuse PDF ( Adobe ). 
+>un utilitaire de compression/ decompression. 
+>voire, un antivirus. 
+
+8) Créer session :
+
+le login sera "test" et le mp "Azerty77
+
+Notes diverses (1): 
+
+>Il faut éviter de mettre à jour le BIOS. 
+>Toujours prendre un ordinateur portable avec une carte graphique dédiée, et pas un chipset avec carte graphique intégrée. 
+_Il ne faut jamais défragmenter un SSD. Il faut désactiver la défragmentation automatique. 
+>La durée de vie d'un disque dur fixe est environ de 10 ans, et celle d'un portable, moins. 
+>Sigvérif est un utilitaire de vérification de MAJ. "Avancé" fait un rapport. 
+>Double>driver fait des sauvgardes de pilotes. 
+>Moteurs de recherche conseillés: Qwant ( fr), Ecosia, Brave ( fr). 
+>Les antivirus les plus efficaces sont: Trendmicro, Eset ( ?) ou Avg free. 
+
+Le moteur de recherche :
+Il indexe les sites webs. Les mots>clefs renvoient vers les sites indexés à partir de ceux>ci. 
+L'ordre d'apparition est déterminé par le référencement et par le nombre de clics. 
+
+
+À faire dans la session "test" : 
+
+1) Configurer l'accès au réseau: 
+
+>Épingler les outils bureautiques à la barre des tâches. 
+>Faire afficher les extensions de fichier et les fichiers cachés. 
+Paramétrer l'accès au dossier nommé "partage commun" sité à la racine du C:. 
+
+procédure: 
+>clic droit sur icône réseau dans la barre des tâches à droite. 
+>Ouvrir les paramètres réseau et internet. 
+>Ethernet. 
+>Centre réseau et partage. 
+>Modifier les paramètres de la carte. 
+>propriétés. 
+>double clic sur "protocole internet version 4" ( tcp/ipv4). 
+>utiliser l'adresse du serveur DNS suivante:  192.168.20.100 ( à l'onglet n°2)
+>entrer IP du DNS auxillaire ( google). 
+>cocher la case " valider le protocole" en quittant. 
+
+Configuration du proxy: 
+
+>Aller dans " ouvrir les paramètres réseau et internet". ( clic droit )
+>aller dans " proxy". 
+>activer "utiliser proxy". 
+>mettre l'adresse IP ( 192.168.20.100 8080)
+>cocher " ne pas utiliser le serveur proxy pour les adresses locales". 
+
+Test de connexion: 
+
+>aller dans la console. 
+>taper "ipconfig". 
+>aller pinger l'adresse IP de la passerelle : ping+ adresse ip de la passerelle. 
+>pinger une machine voisine= entrer l'adresse ipv4 de la machine. 
+comment vérifier si on est en privé: 
+>état
+>basculer 
+
+2) Paramétrer l'accès au partage commun: 
+aller dans C:.  
+>créer un dossier "partage commun". 
+>clic droit. 
+>Accorder l'accès à des personnes spécifiques. 
+>"tout le monde"+ " technicien". 
+>Ajouter. 
+>lecture et écriture. 
+>partager. 
+
+Le chemin d'accès UNC :
+
+		Le chemin d'accès à un partage réseau est dit "chemin UNC", lequel commence toujours par 2 antislashs ( ou "backslash" en anglais) suivis du nom NETBIOS, c'est à dire, le nom de la machine sur le réseau( 15 caractères maximum, en majuscules), suivi d'un nouvel antislash, puis du nom du répertoire partagé. ex: \\VM>FORM\partage>form
+
+Notes diverses (2): 
+
+les réseaux wifi publics:
+
+>il faut les éviter. 
+>les pirates "sniffent" le réseau et détectent toutes les machines. 
+>la seule façon de s'en protéger est de créer un VPN. 
+>La passerelle est l'équivalent d'une box/routeur. Elle a 2 cartes réseau, l'une pour le privé, et l'autre pour le public. la passerelle sert à connecter 2 réseaux. 
+>le réseau " local" est le réseau de la salle. 
+>Il faut désactiver l'option "hotspot" d'une box car les fournisseurs en profitent pour se décharger sur certains de leurs clients. 
+>l' "attaque de l'homme du milieu": Le pirate intercepte une requête, puis puis récupère l'adresse MAC du serveur et l'usurpe. 
+
+_____________________________________________________________________________
+
+2/10/2020
+
+II Optimiser un système
+
+Les bonnes pratiques d'optimisation des performances et de l'adresse de stockage. 
+
+I l'optimisation des performances système.
+
+1) optimiser le démarrage :
+en désactivant les programmes qui lancent inutilement au démarrage.  ex: One drive ( cloud). via: 
+1>le gestionnaire de tâches. 
+2>la console Msconfig. 
+
+> démarrer: ne pas démarrer la GUI. 
+> services: Cocher "masquer tous les services de Microsoft". 
+> Mozilla maintenance service. 
+
+En somme, on va désactiver tous les updates. 
+
+II  optimiser la mémoire virtuelle. 
+
+On va augmenter sa taille jusqu'à 1.5 fois la taille de la RAM. Par exemple, pour 4 Go de RAM, on mettra 6Go de mémoire virtuelle. 
+>windows+ pause. 
+>paramètres avancés. 
+>performances. 
+>cliquer sur "paramètres". 
+>mémoire virtuelle. 
+>modifier. 
+>décocher " automatique".( gestion automatisée) 
+>taille personnalisée. 
+taille initiale minimale:  12288 taille max: 18432> disque physique. 
+taille initiale: 2048 taille max: 3072> disque virtuel. ( 1.5 fois)
+
+3) Réduire au maximum les effets visuels :
+ de manière à obtenir les meilleures performances. 
+
+4) Utiliser Readyboost :
+Pour « doper » la machine, sur une clef usb ou une carte sd. Readyboost sert de « pseudo>ram ». 
+>Il faut aller dans les propriétés de la clef, puis dans l’onglet « readyboost ». 
+Activer/désactiver les fonctionnalités de windows :
+>désisntaller les « crapware » ou les « bloatware » qui sont pour la plupart inutiles, sauf : 
+>l’aide hors>ligne. 
+>l’assistant de configuration du réseau. 
+>ce qui envoie des notifications de MAJ de la machine. 
+
+Activer/ Désactiver les fonctionnalités de windows: 
+>désinstaller les "crapwares" ou les "bloatwares"( ang. gonglé) qui sont pour la plupart inutiles, sauf: 
+1> l'aide hors ligne. 
+2>l'assistant de configuration du réseau
+3>ce qui envoie les notifications de MAJ de la machine. 
+
+Notes diverses: 
+>mieux vaut éviter Lenovo, sauf la gamme professionnelle. 
+>pour les processeurs, il ne faut pas acheter " en dessous de i5 ". 
+>parmi les "antivirus qui ne servent à rien": Macafee ou Kaspersky. 
+
+
+II optimiser l’espace de stockage.
+
+1) activer la compression sur a ou les partitions de données :
+
+>clic droit sur le bouton démarrer
+>aller dans « gestion des disques ». 
+>clic droit en bas sur la partition:c. 
+>sélectionner « réduire le volume ». 
+>153 600 mo : entrer
+>cliquer sur « réduire ». 
+>cliquer sur « nouveau volume simple ».  
+>Z, data. 
+>suivant
+cocher «  activer la compression ». 
+
+2) Paramétrer la défragmentation :
+
+>via l’onglet « outil » des propriétés du disque :c. 
+>cliquer sur « optimiser ». 
+>modifier les paramètres. 
+
+
+Les points de restauration :
+
+3) nettoyer les anciens points de restauration :
+
+Après avoir crée un point de restauration manuel. 
+
+Créer un point de restauration :
+A)
+>Faire windows+pause
+>paramètres système. 
+>protection du système 
+>configurer
+>créer un point de restauration manuel. 
+
+B)
+>panneau de configuration
+>système et sécurité 
+>sauvegarder et restaurer 
+
+
+Afficher le point de restauration :
+>windows+pause
+>paramètres système
+>protection du système
+> cliquer sur l'onglet "restauration du système"
+
+Nettoyer le disque: 
+
+>aller dans :C. 
+>propriétés
+>nettoyage du disque
+>nettoyer les fichiers systèmes
+>choisir " autres options" dans le 2ème onglet
+>sélectionner 2ème option: "supprimer tous les points de restauration sauf le dernier". 
+
+
+4) Nettoyer régulièrement les fichiers système 
+notamment ceux des MAJ windows. 
+
+5) Réserver un "quota" disque 
+pour l'utilisateur "technicien". 
+
+
+
+
+
+________________________________________________________________________________
+
+06/10/2020
+
+procédures pour la sauvegarde:
+
+1>Créer une image système : 
+
+>Aller dans les paramètres
+>Mises à jour et sécurité 
+>sauvegarde
+>accéder à l’outil de sauvegarde et de restauration windows 7
+
+Faire une sauvegarde des données :
+
+>Aller dans les paramètres ( icône de rouage) : 
+>système et sécurité
+>sauvegarde
+>accéder à l’outil de sauvegarde
+>configurer la sauvegarde
+
+> sur la machine virtuelle : 
+>aller dans la configuration de la sauvegarde
+>sur la partition Z, choisir «  serveur ». 
+>choisir le dossier du partage commun. 
+> « Me laisser choisir ». 
+mettre le chemin du dossier de partage : \\partagePC5>BELL\partage>malcolm
+>entrer les infos du compte technicien
+
+sauvegarder dans un serveur suite :
+[…]
+>décocher « image système ».
+>décocher : bibliothèque d’images, de pellicule, de vidéo, de musique…
+>laisser coché : Appdata, favoris, documents, contacts, bureau. 
+>on va garder la partition «  data ». 
+>suivant. 
+>complète. 
+>mettre « vendredi » et «  à 22h ». 
+>enregistrer et exécuter. 
+
+Supprimer les additions : 
+
+>Aller dans la machine
+>configuration
+>stockage
+>cliquer sur les additions
+>cliquer sur « éjecter ».  /!\ Ne pas les supprimer. 
+
+Réinstaller les additions de virtualbox : 
+>aller dans "périphériques" dans la VM. 
+
+Ajouter un disque dur :
+
+>Avant tout, arrêter la machine !! ( sinon ça ne fonctionnera pas). 
+>ouvrir la machine et éjecter le disque
+
+>Aller dans « contrôleur sata »
+>ajouter un disque dur ( icône de droite)
+>créer
+>VHD
+>dynamiquement
+>mettre 100 go. 
+>créer
+>choisir
+>démarrer la VM. 
+>Gestion des disques. 
+>Secteur de démarrage> ok>aller sur la partition de 100go > ne pas changer la valeur en Mo
+>laisser coché « formatage rapide » >mais ne pas activer la compression, car les données sont déjà compressées. 
+>partition « s », nom : « sauvegarde ». 
+
+________________________________________________________________________________
+
+7/10/20
+
+Mise en œuvre d’un quota : 
+
+Créer un quota :
+
+>on se réserve 5 go. 
+>cela se fera via la session « technicien »
+ > ce PC >propriétés du disque C>
+onglet « quota »> faire « afficher les les paramètres de quota »
+>cocher «  activer les quotas »> refuser de limiter de l’espace disque face aux utilisateurs qui dépassent.
+/!\ Ne surtout pas « limiter l’espace disque à ». 
+> « entrer des quotas »>créer un nouveau quota>cliquer dans « avancé » puis « rechercher « . 
+>Chercher « technicien » puis limiter le quota de technicien à 5 go. Puis lui mettre un niveau d’avertissement à 4,5 go. ( avec une virgule)
+
+
+Créer une image système : 
+consignes : 
+
+1/ créer un image système avec Macrium sur le second disque dur. 
+2/créer un support de boot/dépannage au format « iso » avec le logiciel Macrium, que vous stockerez dans notre partage de machine physique. 
+
+Procédure pour créer une image système : 
+Dans Macrium:
+>cliquer sur icône en haut à droite > « create an image of the partition", en forme de fenềtre.  *»
+> aller dans "folder"
+>choisir « :s » >next >next. 
+* : il faudra enregistrer 2 fois dans:S. 
+
+Procédure pour créer un ISO de boot: 
+Dans Macrium:
+>crliquer su l'icône en forme de disque et de flèche. 
+>cliquer sur "build". 
+
+Comment détacher une machine de VM :
+>aller dans « machine ». 
+>cliquer sur « supprimer de la liste ». 
+
+>pour faire l’inverse, aller dans : 
+>machine
+>ajouter
+( dans ce PC/utilisateurs/vm/mes machines.)
+>sélectionner disque violet. 
+> « ouvrir »
+Ne pas oublier d’éjecter le fichier iso après. 
+
+________________________________________________________________________________
+
+9/10/ 2020
+
+Renommer une VM: 
+
+>faire "windows+ pause". 
+>aller dans les paramètres avancés. 
+>profil des utilisateurs
+>paramètres
+
+déconnexion rapide: 
+>aller dans le gestionnaire de tâches
+>clic droit
+>déconnecter un utilisateur
+
+
+Les différentes catégories de hackers :
+
+1-les white hats :
+Ils combattent les hackers malveillants. 
+
+2-les black hats :
+Ils utilisent les techniques de hacking afin de nuire ( vol, extorsions) à des personnes physiques ou morales. 
+
+3-les gray hats :
+Ils pratiquent le hacking  "pour l'adrénaline", comme un défi technique, pour voir jusqu'où ils sont capables d'aller. 
+
+4-les "hacktivists" :
+ils hackent à des fins politiques. Par exemple, pour révéler des scandales politiques. ex: Snowden. 
+
+èConseils: 
+>Faire l'optimisation tout de suite. 
+>concernant le partitionnement, il devra y avoir 4 partitions à la fin: 
+1) boot 2) système 3) récupération 4) données.
+
+
+
+12/10/2020
+
+Réseaux 
+
+Comment se prémunir contre la panne matérielle ? 
+CAD contre la défaillance d’un disque dur 
+
+/!\ Cela ne remplace aucunement la sauvegarde régulière des données ? 
+
+>On va configurer les disque durs ( 2 min) en RAID. Il existe plusieurs types de RAID, qui permettent soit :
+-un gain de performances
+-une tolérance des pannes
+-les 2 à la fois
+
+Le RAID peut être logiciel ou matériel. 
+
+1- le RAID 0 : 
+
+-Les données sont réparties et écrites simultannément sur les 2 disques ( avec une partie sur chaque disque, grossièrement moitié-moitié ).  
+-Donc on gagne en performance. c’est uniquement un gain de performance, puisque les données sont écrites et lues simultannément sur 2 disques. 
+-Le gros inconvénient est que si l’on per ;:d l’un des 2 disques, on perd définitivement les données associées. 
+-Les 2 disques doivent etre de même taille, sinon, on aura juste la taille du plus petit. 
+
+2-le RAID 1 dit « mirroring » ( en miroir)
+
+-toujours sur 2 disques de même taille de préférence, pour éviter de perdre du stockage sur le plus grand. 
+-les données sont écrites à l’identique sur les 2 disques. 
+-l’inconvénient est que c’est coûteux en espace disque. 
+-ici, c’est de la tolérance de panne et pas du tout du gain de performances. 
+-la capacité maximale du RAID est celle d’un des 2 disques. 
+
+3-le RAID 5 :
+-Il se fait sur 3 disques de même taille de préférence, ou sur 4, voire 5 disques si on veut du hot spare. 
+-les données vont être récupérées sans l’intervention des équipes techniques .
+-les données sont réparties et écrites sur l’ensemble des 3 disques, comme suit : 
+	-une partie des données d’un fichier est écrite sur l’un des 3 disques
+	- l’autre partie sur un 2ème disque
+	-et le bit de parité sur un autre disque. 
+-C’est à la fois un gain de performance, et surtout, de la tolérance de panne d’un, voire  de 2 disques, si 2 hot spare. 
+-la capacité maximale est de n disques -1. ex :
+ 3 HDD de 1 TO en RAID -5 permet de stocker 2 To  de données. 
+
+Tp Consignes : 
+
+1 ajouter 3 disques durs à la VM à froid
+
+2 rattacher ces 3 disques dans la console de gestion des disques
+
+3 créer l’espace de stockage via le panneau de configuration > système et sécurité>espace de stockage
+
+4 configuration de la sauvegarde des données >paramètres> sauvegarde> ajouter un lecteur> 
+
+5 faire la 1ère sauvegarde
+
+________________________________________________________________________________
+
+
+19/10/2020 :  DOS 
+
+commandes internes : 
+
+« help » affiche toutes les commandes qui existent. 
+
+<help> + espace + nom d’une autre commande : affiche des détails sur une commande. 
+On peut également faire « more » + « / ? » pour obtenir le même résultat. 
+
+« help » + « altg gr » +  « tiret du 6 » → afiche les commandes par sections
+
+cls : cette commande nettoie la console. 
+
+
+Commandes externes :
+
+diskpart : lance diskpart exe, un autre programme. 
+List-disk : liste les disques 
+
+
+I Les commandes pour manipuler les fichiers et les dossiers :
+
+commande chdir ou cd : permet de naviguer dans l’arobrescence et de changer de répertoire. 
+
+cd espace / .. : se place à la racine du C. 
+cd espace ../.. : chemin depuis le répertoire commun 
+
+Commande pour changer de lecteur/partition :
+
+( et non de répertoire ) : lettre du lecteur suivie des « : ». 
+ex : « z : » permet de se rendre sur la partition z : . 
+
+commande pour afficher le contenu des répertoires : 
+
+dir : liste le contenu d’un répertoire. 
+
+dir /p : permet d’afficher le contenu d’un répertoire page par page. 
+
+Commande pour créer un répertoire :
+Mkdir : 
+« make directory », ou « md espace + nom du répertoire à créer » ( voire chemin complet). 
+Ex : c:\Users\technicien>mkdir c:\Users\cath
+
+Commande pour supprimer un répertoire : 
+rmdir + espace  ou rd espace + nom du répertoire permet de supprimer un répertoire. 
+Il peut être suivi de /Q espace ou de /S espace. 
+
+Commande « écho » + espace + message à écrire : renvoie le message à l’écran. 
+
+Echo+ espace+message espace>>chemin vers le fichier à incrémenter : permet d’écrire à la suite du fichier. 
+
+Copy+ espace+ fichier source ( voire chemin d’acès complet) +espace +répertoire de destination ( voire chemin d’accès à ce répertoire) : 
+Permet de copier un fichier . 
+
+La commande Xcopy + espace+ répertoire à copier+ espace+ chemin de destination permet 
+
+
+La commande rename, qui a un alias, ou ren + espace +nom du fichier à renommer + espace+nouveau nom . 
+Rename ne peut renommer qu’au même endroit : on ne peut pas déplacer le fichier en même temps. 
+
+La commande move, à l’inverse, permet de faire les 2 en même temps ( renommer et déplacer), sur un répertoire ou sur un fichier. 
+
+La commande del+ espace+ nom du fichier permet d’effacer un ou plusieurs fichiers. On peut ajouter d’autres fichiers à la suite en laissant un espace. 
+/F permet de forcer la suppression des fichiers en lecture seule. 
+
+La commande type + espace+ nom du fichier permet de visualiser son contenu. 
+
+La commande sort + espace+nom du fichier sert à trier par ordre croissant ou décroissant ( /R) le contenu d’un fichier. 
+Par défaut, ce contenu est redirigé vers l’écran, mais on peut le rediriger vers le même fichier ou un nouveau fichier grâce à la redirection. Le chevron > correspond à la redirection. Le double chevron correspond à l’incrémentation. 
+
+Ex : sort+ espace+ nom de fichier à trier + espace+ >+ nouveau nom de fichier. 
+On peut préciser un chemin. 
+
+
+________________________________________________________________________________
+
+20 octobre 2020 :
+
+II les commandes pour gérer les utilisateurs :
+
+Pour intervenir sur la base SAM ( account manager service ), il faut avoir lancé l’ invite de commande en mode administrateur. 
+
+Net user : 
+Cette commande sert à lister les comptes existant en local. 
+
+Pour créer un utilisateur : 
+net user + espace+nom d’utilisateur à créer + espace+ mdp+ /add
+
+Pour créer un utilisateur avec un MDP chiffré : 
+net user+ espace+nom d’utilisateur à créer+ espace+*+espace+/add
+On est invité à entrer le mdp après. 
+
+Pour supprimer un utilisateur :
+net user+espace+nom d’utilisateur à supprimer+espace+ /del
+
+Activer ou désactiver un utilisateur : 
+net user+espace+nom d’utilisateur+espace+Active:+ yes pour activer ; +no pour désactiver
+
+Afficher les propriétés d’un compte : 
+net user+espace+nom d’utilisateur 
+
+Limiter les horaires d’accès : 
+net user+ espace+nom d’utilisateur+espace+/TIMES:jour(s);heures=
+
+ex : 08:00-12h00, 13:00-14:00
+
+exemple : net user test /TIMES : L,V ;08:00-17:00 ;
+
+Pour annuler la limitation d’horaires : 
+net user test /TIMES : all ;
+
+Pour gérer les groupes : 
+
+net localgroup : fait afficher la liste des groupes locaux. 
+
+net localgroup+espace+nom d’un groupe : fait afficher la liste des membres d’un groupe. 
+
+Ajouter un utilisateur au groupe :
+net localgroup+espace+nom du groupe+user+espace+/add 
+
+On peut ajouter plusieurs utilisateurs simultanément : 
+net localgroup +espace+nom du groupe+user1+espace+user2+espace+user3+espace+/add
+
+Ajouter un nouveau groupe : 
+net localgroup+espace+nom du groupe à créer+espace+/add
+
+Supprimer un groupe : 
+net localgroup+espace+nom du groupe+espace+/del
+
+
+processus= programme en cours d’exécution. 
+Service= processus qui est lié au système d’exploitation, qui tourne en arrière plan et vient en appui de l’OS. 
+Socket= connexion ouverte entre une machine et un serveur distant. On est dans une architecture client/serveur. 
+
+
+L’héritage :
+un fichier hérite des droits 
+
+On ne supprime jamais l’héritage, on le convertit. 
+Une règle de refus prime sur les autorisations héritées, mais pas sur les autorisations explicites
+
+net user c.lumie /times : l,ma,mer,je ;08:00-18:00;v;08-17:00
+
+________________________________________________________________________________
+
+26/10/2020
+
+       III La gestion des disques via l’invite de commande : 
+       
+Acéder à Dispkart : 
+taper diskpart+ entrée
+
+Le système d’exploitation voit les volumes logiques. 
+
+A faire : 
+-Chercher commande pour lister les disques, les partitions, les volumes. 
+-Chercher comande pour sélectionner celles-ci. 
+-Comment créer...
+
+shift+f10 : ouvrir la console . 
+
+
+Comment récupérer une VM ? 
+
+Il ne faut pas copier tout le répertoire. Il faut juste copier le VHD	qui apparaît en violet. 
+Recréer une machine, et y  rattacher le VHD 
