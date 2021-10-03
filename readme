@@ -49,9 +49,6 @@ II Optimiser un système :
 	
 	
 
-
-
-
 3-Optimiser l'espace de stockage
 		a) activer la compression sur la ou les partitions
 		de données
@@ -76,7 +73,6 @@ IV détails configuration d'une VM
 
 	1- renommer une VM
 	2- installer ou supprimer les additions
-
 
 
 
